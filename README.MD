@@ -8,7 +8,7 @@ git remote add origin https://github.com/steeven-js/laboutiquefrancaise.git
 git push -u origin main
 
 git add .
-git commit -m "021 Les vues privées _ Modification du mot de passe de l'utilisateur"
+git commit -m "022 Mise à jour de notre template pour afficher l'utilisateur et les routess"
 git push -u origin main
 ```
 
@@ -23,5 +23,5 @@ git push -u origin main
 - [x]  019 Création de notre formulaire de login
 - [x]  020 Les vues privées _ L'espace membre de l'utilisateur
 - [x]  021 Les vues privées _ Modification du mot de passe de l'utilisateur
-- [ ]  022 Mise à jour de notre template pour afficher l'utilisateur et les routes
+- [x]  022 Mise à jour de notre template pour afficher l'utilisateur et les routes
 - [ ]  023 Vous êtes arrivé jusqu'ici, bravo ! On fait le point en vidéo
