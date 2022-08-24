@@ -8,7 +8,7 @@ git remote add origin https://github.com/steeven-js/laboutiquefrancaise.git
 git push -u origin main
 
 git add .
-git commit -m "019 Création de notre formulaire de login"
+git commit -m "020 Les vues privées _ L'espace membre de l'utilisateur"
 git push -u origin main
 ```
 
@@ -21,7 +21,7 @@ git push -u origin main
 - [x]  017 Sécurité _ Encodage des mots de passe de nos utilisateurs
 - [x]  018 Valider les données grâce au composant Validator de Symfony 5
 - [x]  019 Création de notre formulaire de login
-- [ ]  020 Les vues privées _ L'espace membre de l'utilisateur
+- [x]  020 Les vues privées _ L'espace membre de l'utilisateur
 - [ ]  021 Les vues privées _ Modification du mot de passe de l'utilisateur
 - [ ]  022 Mise à jour de notre template pour afficher l'utilisateur et les routes
 - [ ]  023 Vous êtes arrivé jusqu'ici, bravo ! On fait le point en vidéo
