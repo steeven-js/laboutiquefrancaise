@@ -25,3 +25,7 @@ git push -u origin main
 - [x]  021 Les vues privées _ Modification du mot de passe de l'utilisateur
 - [x]  022 Mise à jour de notre template pour afficher l'utilisateur et les routes
 - [x]  023 Vous êtes arrivé jusqu'ici, bravo ! On fait le point en vidéo
+
+## 04 L'administration
+- [ ]  024 Présentation du bundle EasyAdmin v3 dans notre projet Symfony 5
+- [ ]  025 Installation, configuration et mapping de EasyAdmin avec l'entité User()
