@@ -52,7 +52,7 @@ class RegisterType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'le mot de passe et la confirmation doivent être identique.',
                 'label' => 'votre mot de passe',
-                'mapped' => true,
+                'required' => true,
                 'first_options' => [
                     'label' => 'Mot de passe',
                     'attr' => [
