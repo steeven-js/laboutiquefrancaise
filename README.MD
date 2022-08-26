@@ -45,15 +45,15 @@ git push -u origin main
 - [x]  025 Installation, configuration et mapping de EasyAdmin avec l'entité User()
 
 ## 05 Les produits
-- [ ]  026 Création de l'entité Category() pour organiser nos produits
-- [ ]  027 Mapping de l'entité Category() dans EasyAdmin
-- [ ]  028 Création de l'entité Product()
-- [ ]  029 Important - Le point avant de continuer sur les mises à jour
-- [ ]  030 Mapping de l'entité Product() dans EasyAdmin
-- [ ]  031 Refactor de notre EventSubscriber pour l'ajout d'image dans nos produits
-- [ ]  032 Important - Correctif mise à jour _ Mapping Product() avec EasyAdmin
-- [ ]  033 Création des produits dans le backoffice
-- [ ]  034 Création des vues pour afficher nos produits à nos utilisateurs
+- [x]  026 Création de l'entité Category() pour organiser nos produits
+- [x]  027 Mapping de l'entité Category() dans EasyAdmin
+- [x]  028 Création de l'entité Product()
+- [x]  029 Important - Le point avant de continuer sur les mises à jour
+- [x]  030 Mapping de l'entité Product() dans EasyAdmin
+- [x]  031 Refactor de notre EventSubscriber pour l'ajout d'image dans nos produits
+- [x]  032 Important - Correctif mise à jour _ Mapping Product() avec EasyAdmin
+- [x]  033 Création des produits dans le backoffice
+- [x]  034 Création des vues pour afficher nos produits à nos utilisateurs
 - [ ]  035 Création d'une barre de filtre produit pour faciliter la navigation
 
 ## 06 Le panier
