@@ -33,17 +33,17 @@ class Cart
 		$this->requestStack->getSession()->set('cart',$cart); 
 	}
 
-    // AFFICHE le panier
+    // AJOUTER au panier
 	public function get()
 	{
-		
+		// Il s'agit du get de la biblihothèque SessionInterface (Returns an attribute.)
 		return $this->requestStack->getSession()->get('cart');
 	}
 
     // SUPPRIME le panier
 	public function remove()
 	{
-		
+		// Il s'agit du remove de la biblihothèque SessionInterface (Removes an attribute.)
 		return $this->requestStack->getSession()->remove('cart');
 	}
 
