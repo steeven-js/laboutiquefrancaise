@@ -22,14 +22,18 @@ class Cart
 
 	public function add($id)
 	{
+		// On récupère les informations du panier à l'aide de la session
 		$cart = $this->requestStack->getSession()->get('cart', []);
 
+		// Si dans le panier il y a un produit déjà inséré
 		if (!empty($cart[$id])) {
+			// On incrémente
         	$cart[$id]++; 
 		} else {
 			$cart[$id] = 1;
 		}
-
+		// Il s'agit du set de la biblihothèque SessionInterface (Sets an attribute.)
+		// On stock les informations du panier dans une session (cart)
 		$this->requestStack->getSession()->set('cart',$cart); 
 	}
 
