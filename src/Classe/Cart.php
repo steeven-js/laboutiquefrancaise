@@ -3,52 +3,74 @@
 namespace App\Classe;
 
 use Symfony\Component\HttpFoundation\RequestStack;
-//use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
-class Cart 
+class Cart
 
 {
-	//private $session;
-	private $requestStack;
+	// J'initialise une session
+    private $requestStack;
 
-	//public function __construct(SessionInterface $session)
-	public function __construct(RequestStack $requestStack)
-	{
-	//$this->session = $session;
-	$this->requestStack = $requestStack;
-	}
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
+    public function add($id) //ajoute les products dans le panier
+    {
+        $session = $this->requestStack->getSession();
+
+        $cart = $session->get('cart'); //on récupère les informations du panier à l'aide de la session
+
+        if (!empty($cart[$id])) {
+
+            $cart[$id]++; //on incrémente
+        } else {
+            $cart[$id] = 1;
+        }
+
+        $session->set('cart', $cart);
+    }
 
 
-	public function add($id)
+    public function get()  //affiche le panier
+    {
+        $session = $this->requestStack->getSession();
+        return $session->get('cart');
+    }
+
+
+    public function remove()  //vide le panier
+    {
+        $session = $this->requestStack->getSession();
+        return $session->remove('cart');
+    }
+
+    public function delete($id)  //supprime un produit du panier 
+    {
+        $session = $this->requestStack->getSession();  //je lance une session
+        $cart = $session->get('cart', []);              //je recupére les infos de ma session cart
+        unset($cart[$id]);                           //je supprime de mon tableau  l'element corrspondant
+
+        return $session->set('cart', $cart);        //je redéfins la nouvelle valeur dans la session cart
+    }
+
+	// REDUIRE
+	public function decrease($id)
 	{
 		// On récupère les informations du panier à l'aide de la session
 		$cart = $this->requestStack->getSession()->get('cart', []);
 
-		// Si dans le panier il y a un produit déjà inséré
-		if (!empty($cart[$id])) {
-			// On incrémente
-        	$cart[$id]++; 
+		// Vrérifier si la quantité de notre produit = 1
+		if ($cart[$id] > 1) {
+			// Retirer une quantité (-1)
+			$cart[$id]--; 
+			
 		} else {
-			$cart[$id] = 1;
+			// Supprimer mon produit
+			unset($cart[$id]);
 		}
-		// Il s'agit du set de la biblihothèque SessionInterface (Sets an attribute.)
-		// On stock les informations du panier dans une session (cart)
+		
+		// Je redéfini la même route que mon panier
 		$this->requestStack->getSession()->set('cart',$cart); 
 	}
-
-    // AJOUTER au panier
-	public function get()
-	{
-		// Il s'agit du get de la biblihothèque SessionInterface (Returns an attribute.)
-		return $this->requestStack->getSession()->get('cart');
-	}
-
-    // SUPPRIME le panier
-	public function remove()
-	{
-		// Il s'agit du remove de la biblihothèque SessionInterface (Removes an attribute.)
-		return $this->requestStack->getSession()->remove('cart');
-	}
-
 }
