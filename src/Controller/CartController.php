@@ -11,29 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
 
     #[Route('/mon-panier', name: 'app_cart')]  //chemin vers le panier
     public function index(cart $cart): Response
-    {
-        // dd($cart->get());
-        $cartComplete = [];
-        foreach ($cart->get() as $id => $quantity) {
-            $cartComplete[] = [
-                'product' => $this->entityManager->getRepository(Product::class)->findOneById($id),
-                'quantity' => $quantity
-            ];
-        }
-
-        // dd($cartComplete);
+    { 
 
         return $this->render('cart/index.html.twig', [
-            'cart' => $cartComplete
+            'cart' => $cart->getFull()
         ]);
     }
 

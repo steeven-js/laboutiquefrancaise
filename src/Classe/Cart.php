@@ -2,18 +2,24 @@
 
 namespace App\Classe;
 
+use App\Entity\Product;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class Cart
 
 {
-	// J'initialise une session
-    private $requestStack;
+	//private $session;
+	private $requestStack;
+	private $entityManager;
 
-    public function __construct(RequestStack $requestStack)
-    {
-        $this->requestStack = $requestStack;
-    }
+	//public function __construct(SessionInterface $session)
+	public function __construct(EntityManagerInterface $entityManager, RequestStack $requestStack)
+	{
+	//$this->session = $session;
+	$this->requestStack = $requestStack;
+	$this->entityManager = $entityManager;
+	}
 
     public function add($id) //ajoute les products dans le panier
     {
@@ -73,4 +79,31 @@ class Cart
 		// Je redéfini la même route que mon panier
 		$this->requestStack->getSession()->set('cart',$cart); 
 	}
+
+    public function getFull()
+    {
+        $cartComplete = [];
+
+        if($this->get()) {
+            foreach ($this->get() as $id => $quantity) {
+                // Je récupère l'ID du produit en base de données
+                $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+
+                // SI le produit n'existe pas
+                if (!$product_object) {
+                    // On le supprime du panier
+                    $this->delete($id);
+                    continue;
+                }
+
+                $cartComplete[] = [
+                'product' => $product_object,
+                'quantity' => $quantity
+                ];
+            } 
+        }
+
+        return $cartComplete;
+
+    }
 }
